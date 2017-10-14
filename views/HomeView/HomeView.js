@@ -1,36 +1,52 @@
 // @flow
 import React from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import { login } from "../../libraries/Auth";
+import * as firebase from "firebase";
 
 export default class HomeView extends React.Component {
-  state: {
-    email: "",
+  constructor(props) {
+    super(props);
+  }
+  state = {
+    email: "jason.eli.rodriguez@gmail.com",
     password: ""
   };
 
   render() {
     const { navigate } = this.props.navigation;
-
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        console.log("authenticated");
+        navigate("Selection");
+      } else {
+        console.log("NO USER");
+      }
+    });
     return (
       <View style={styles.container}>
-        <TextInput
-          style={formStyles.container}
-          placeholder="Email"
-          onChangeText={email => {
-            this.setState({ email });
-          }}
-        />
-        <TextInput
-          style={formStyles.container}
-          placeholder="Password"
-          onChangeText={password => {
-            this.setState({ password });
-          }}
-        />
-        <Button onPress={() => navigate("Selection")} title="Select me bro" />
+        <View style={styles.row}>
+          <TextInput
+            style={formStyles.container}
+            placeholder="Email"
+            onChangeText={text => {
+              this.state.email = text;
+            }}
+          />
+        </View>
+        <View style={styles.row}>
+          <TextInput
+            style={formStyles.container}
+            placeholder="Password"
+            secureTextEntry={true}
+            onChangeText={text => {
+              this.state.password = text;
+            }}
+          />
+        </View>
         <Button
-          onPress={() => navigate("Selection")}
-          title="Create an Account"
+          onPress={() => login(this.state.email, this.state.password)}
+          title="Login"
         />
       </View>
     );
@@ -39,16 +55,23 @@ export default class HomeView extends React.Component {
 
 const formStyles = StyleSheet.create({
   container: {
-    width: 200,
-    height: 50
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: "#ababab",
+    borderRadius: 10,
+    marginBottom: 5,
+    flex: 0.75
   }
 });
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF",
+    height: 100,
+    backgroundColor: "#FFFFFF",
     alignItems: "center"
-    //paddingTop: 30
+  },
+  row: {
+    flexDirection: "row"
   }
 });
