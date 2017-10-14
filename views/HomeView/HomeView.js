@@ -29,7 +29,7 @@ export default class HomeView extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    firebase.auth().onAuthStateChanged(async user => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log("authenticated");
         getUser(user.uid).then(userData => {
