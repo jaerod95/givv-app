@@ -6,12 +6,15 @@ import RootViewAdmin from "../views/RootViewAdmin/RootViewAdmin";
 import RootViewBusiness from "../views/RootViewBusiness/RootViewBusiness";
 import RootViewEmployee from "../views/RootViewEmployee/RootViewEmployee";
 
-const routes = StackNavigator({
-  Home: { screen: HomeView }, // login screen
-  Selection: { screen: SelectionView },
-  RootViewAdmin: { screen: RootViewAdmin },
-  RootViewBusiness: { screen: RootViewBusiness },
-  RootViewEmployee: { screen: RootViewEmployee }
-});
+const routes = StackNavigator(
+  {
+    Home: { screen: HomeView }, // login screen
+    Selection: { screen: SelectionView }
+    // RootViewAdmin: { screen: RootViewAdmin },
+    // RootViewBusiness: { screen: RootViewBusiness },
+    // RootViewEmployee: { screen: RootViewEmployee }
+  },
+  { headerMode: "none" }
+);
 
 export default routes;
