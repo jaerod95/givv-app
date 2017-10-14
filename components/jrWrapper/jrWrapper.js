@@ -20,6 +20,7 @@ export default class JrWrapper extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    paddingTop: 35
   }
 });

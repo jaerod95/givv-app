@@ -9,6 +9,8 @@ export default class CharityRegisterOne extends React.Component {
     return (
       <View>
         <Text>This is the charity RegisterOne</Text>
+        <Text>This is the charity RegisterOne</Text>
+        <Text>This is the charity RegisterOne</Text>
         <Button
           style={styles.button}
           onPress={() => navigate("RegisterTwo", { user, userData })}

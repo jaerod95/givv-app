@@ -8,7 +8,9 @@ export default class CharityRegisterTwo extends React.Component {
     const { user, userData } = this.props.navigation.state.params;
     return (
       <View>
-        <Text>This is the charity RegisterTwo</Text>
+        <Text>This is the charity RegisterOne</Text>
+        <Text>This is the charity RegisterOne</Text>
+        <Text>This is the charity RegisterOne</Text>
         <Button
           style={styles.button}
           onPress={() => navigate("Home", { user, userData })}
