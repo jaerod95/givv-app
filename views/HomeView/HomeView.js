@@ -12,190 +12,103 @@ import { login, register } from "../../libraries/Auth";
 import Colors from "../../libraries/Colors";
 import * as firebase from "firebase";
 
+// Custom form
+import Form from "../../components/jrForm/jrForm";
+
 export default class HomeView extends React.Component {
   state = {
     email: "",
     password: "",
     toggle: false,
     firstName: "",
-    lastName: ""
+    lastName: "",
+    showLoginForm: true
   };
 
   toggle() {
-    console.log("toggle ran");
     this.setState({ toggle: !this.state.toggle });
   }
 
   render() {
     const { navigate } = this.props.navigation;
+
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log("authenticated");
         navigate("Selection");
-      } else {
-        console.log("NO USER");
       }
     });
+
     return (
       <View style={styles.wrapper}>
-        <View style={[styles.wrapper, this.state.toggle && styles.hidden]}>
-          <View style={styles.row}>
-            <TextInput
-              ref="loginEmail"
-              style={formStyles.container}
-              placeholder="Email"
-              returnKeyType="next"
-              onSubmitEditing={event => {
-                this.refs.loginPassword.focus();
-              }}
-              onChangeText={text => {
-                this.state.email = text;
-              }}
-            />
-          </View>
-          <View style={styles.row}>
-            <TextInput
-              ref="loginPassword"
-              style={formStyles.container}
-              placeholder="Password"
-              returnKeyType="go"
-              secureTextEntry={true}
-              onChangeText={text => {
-                this.state.password = text;
-              }}
-            />
-          </View>
-          <Button
-            onPress={() => login(this.state.email, this.state.password)}
-            title="Login"
-          />
-          <View style={styles.row}>
-            <Text>Don't have an account? </Text>
-            <TouchableHighlight
-              style={styles.highlight}
-              underlayColor="transparent"
-              onPress={() => this.toggle()}
-            >
-              <Text style={styles.button}>Create an Account</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
-        <View style={[styles.wrapper, !this.state.toggle && styles.hidden]}>
-          <View style={styles.row}>
-            <TextInput
-              style={formStyles.container}
-              placeholder="First Name"
-              returnKeyType="next"
-              onSubmitEditing={event => {
-                this.refs.registerLastName.focus();
-              }}
-              onChangeText={text => {
-                this.state.firstName = text;
-              }}
-            />
-          </View>
-          <View style={styles.row}>
-            <TextInput
-              ref="registerLastName"
-              style={formStyles.container}
-              placeholder="Last Name"
-              returnKeyType="next"
-              onSubmitEditing={event => {
-                this.refs.registerEmail.focus();
-              }}
-              onChangeText={text => {
-                this.state.lastName = text;
-              }}
-            />
-          </View>
-          <View style={styles.row}>
-            <TextInput
-              ref="registerEmail"
-              style={formStyles.container}
-              placeholder="Email"
-              returnKeyType="next"
-              onSubmitEditing={event => {
-                this.refs.registerPassword.focus();
-              }}
-              onChangeText={text => {
-                this.state.email = text;
-              }}
-            />
-          </View>
-          <View style={styles.row}>
-            <TextInput
-              ref="registerPassword"
-              style={formStyles.container}
-              placeholder="Password"
-              returnKeyType="go"
-              secureTextEntry={true}
-              onChangeText={text => {
-                this.state.password = text;
-              }}
-            />
-          </View>
-          <Button
-            onPress={() =>
-              register(
-                this.state.firstName,
-                this.state.lastName,
-                this.state.email,
-                this.state.password
-              )}
-            title="Create Account"
-          />
-          <View style={styles.row}>
-            <Text>Already have an account? </Text>
-            <TouchableHighlight
-              style={styles.highlight}
-              underlayColor="transparent"
-              onPress={() => this.toggle()}
-            >
-              <Text style={styles.button}>Login</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
+        <Form
+          onSubmit={state => {
+            login(state.email, state.password);
+          }}
+          fields={[
+            {
+              type: "text",
+              name: "email",
+              text: "Email"
+            },
+            {
+              type: "text",
+              name: "password",
+              text: "Password"
+            }
+          ]}
+          visibleWhenTrue={this.state.showLoginForm}
+        />
+        <Form
+          onSubmit={state => {
+            register(
+              state.firstName,
+              state.lastName,
+              state.email,
+              state.password
+            );
+          }}
+          fields={[
+            {
+              type: "text",
+              name: "firstName",
+              text: "First Name"
+            },
+            {
+              type: "text",
+              name: "lastName",
+              text: "Last Name"
+            },
+            {
+              type: "text",
+              name: "email",
+              text: "Email"
+            },
+            {
+              type: "text",
+              name: "password",
+              text: "Password"
+            }
+          ]}
+          visibleWhenTrue={!this.state.showLoginForm}
+        />
+        <Button
+          title={this.state.showLoginForm ? "Create an account" : "Login"}
+          onPress={() => {
+            let toggle = !this.state.showLoginForm;
+            this.setState({ showLoginForm: toggle });
+          }}
+        />
       </View>
     );
   }
 }
 
-const formStyles = StyleSheet.create({
-  container: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: "#ababab",
-    borderRadius: 10,
-    marginBottom: 5,
-    flex: 0.75
-  }
-});
-
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    height: 100,
     backgroundColor: "#FFFFFF",
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
     paddingBottom: 50
-  },
-  container: {
-    flex: 1,
-    height: 100,
-    backgroundColor: "#FFFFFF",
-    alignItems: "center"
-  },
-  row: {
-    flexDirection: "row"
-  },
-  button: {
-    color: Colors.main
-  },
-  highlight: {
-    backgroundColor: "transparent"
-  },
-  hidden: {
-    display: "none"
   }
 });
