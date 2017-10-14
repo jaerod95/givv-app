@@ -41,8 +41,13 @@ export default class HomeView extends React.Component {
         <View style={[styles.wrapper, this.state.toggle && styles.hidden]}>
           <View style={styles.row}>
             <TextInput
+              ref="loginEmail"
               style={formStyles.container}
               placeholder="Email"
+              returnKeyType="next"
+              onSubmitEditing={event => {
+                this.refs.loginPassword.focus();
+              }}
               onChangeText={text => {
                 this.state.email = text;
               }}
@@ -50,8 +55,10 @@ export default class HomeView extends React.Component {
           </View>
           <View style={styles.row}>
             <TextInput
+              ref="loginPassword"
               style={formStyles.container}
               placeholder="Password"
+              returnKeyType="go"
               secureTextEntry={true}
               onChangeText={text => {
                 this.state.password = text;
@@ -78,6 +85,10 @@ export default class HomeView extends React.Component {
             <TextInput
               style={formStyles.container}
               placeholder="First Name"
+              returnKeyType="next"
+              onSubmitEditing={event => {
+                this.refs.registerLastName.focus();
+              }}
               onChangeText={text => {
                 this.state.firstName = text;
               }}
@@ -85,8 +96,13 @@ export default class HomeView extends React.Component {
           </View>
           <View style={styles.row}>
             <TextInput
+              ref="registerLastName"
               style={formStyles.container}
               placeholder="Last Name"
+              returnKeyType="next"
+              onSubmitEditing={event => {
+                this.refs.registerEmail.focus();
+              }}
               onChangeText={text => {
                 this.state.lastName = text;
               }}
@@ -94,8 +110,13 @@ export default class HomeView extends React.Component {
           </View>
           <View style={styles.row}>
             <TextInput
+              ref="registerEmail"
               style={formStyles.container}
               placeholder="Email"
+              returnKeyType="next"
+              onSubmitEditing={event => {
+                this.refs.registerPassword.focus();
+              }}
               onChangeText={text => {
                 this.state.email = text;
               }}
@@ -103,8 +124,10 @@ export default class HomeView extends React.Component {
           </View>
           <View style={styles.row}>
             <TextInput
+              ref="registerPAssword"
               style={formStyles.container}
               placeholder="Password"
+              returnKeyType="go"
               secureTextEntry={true}
               onChangeText={text => {
                 this.state.password = text;
