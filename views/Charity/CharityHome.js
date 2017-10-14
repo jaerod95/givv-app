@@ -1,10 +1,12 @@
 // @flow
 import React from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import Router from "../../routes/CharityRouter";
 
 export default class CharityHome extends React.Component {
   render() {
-    return <Text>This is the charity home page</Text>;
+    const { user, userData } = this.props.navigation.state.params;
+    return <Router user={user} userData={userData} />;
   }
 }
 
