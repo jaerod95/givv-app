@@ -1,6 +1,13 @@
 // @flow
 import React from "react";
-import { StyleSheet, Text, View, Button, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Alert,
+  TouchableHighlight
+} from "react-native";
 import Colors from "../../libraries/Colors";
 import { setUserType } from "../../libraries/RTD";
 
@@ -42,30 +49,30 @@ export default class SelectionView extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View
+        <TouchableHighlight
           style={[styles.sectionWrapper, styles.green]}
           onPress={() => this.confirmSelection("Charity", navigate)}
         >
           <Text style={styles.button} color={Colors.white}>
             Charity
           </Text>
-        </View>
-        <View
+        </TouchableHighlight>
+        <TouchableHighlight
           style={[styles.sectionWrapper, styles.blue]}
           onPress={() => this.confirmSelection("Business", navigate)}
         >
           <Text style={styles.button} color={Colors.white} title="Business">
             Business
           </Text>
-        </View>
-        <View
+        </TouchableHighlight>
+        <TouchableHighlight
           style={[styles.sectionWrapper, styles.yellow]}
           onPress={() => this.confirmSelection("Employee")}
         >
           <Text style={styles.button} color={Colors.white}>
             Employee
           </Text>
-        </View>
+        </TouchableHighlight>
       </View>
     );
   }

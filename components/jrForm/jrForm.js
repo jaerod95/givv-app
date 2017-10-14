@@ -7,8 +7,7 @@ export default class Form extends React.Component {
   styles = {
     container: {
       flex: 1,
-      alignItems: "center",
-      justifyContent: "flex-end"
+      alignItems: "center"
     },
     row: {
       flexDirection: "row"
@@ -34,6 +33,7 @@ export default class Form extends React.Component {
   // is updated, esp. when text changes are made
   // - it will call the onSubmit prop once the form is submitted
   stateUpdated() {
+    console.log("Form state updated");
     if (this.state.shouldSubmit) {
       this.props.onSubmit(this.state);
     }
@@ -93,7 +93,9 @@ export default class Form extends React.Component {
       >
         {textFields}
         <Button
-          onPress={() => this.setState({ shouldSubmit: true })}
+          onPress={() => {
+            this.setState({ shouldSubmit: true }, this.stateUpdated);
+          }}
           title="Submit"
         />
       </View>

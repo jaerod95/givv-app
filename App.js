@@ -18,6 +18,11 @@ const config = {
 firebase.initializeApp(config);
 
 export default class App extends React.Component {
+  constructor(props: any) {
+    super(props);
+    console.disableYellowBox = true;
+  }
+
   render() {
     return (
       <JrWrapper>
