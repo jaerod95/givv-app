@@ -1,16 +1,17 @@
 import * as firebase from "firebase";
 
 export function login(email, password) {
-  console.log(email);
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(sucess => {
-      //console.log(sucess);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  return new Promise((resolve, reject) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(sucess => {
+        resolve();
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
 }
 
 export function register(firstName, lastName, email, password) {

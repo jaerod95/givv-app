@@ -1,9 +1,43 @@
 // @flow
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, Alert } from "react-native";
 import Colors from "../../libraries/Colors";
+import { setUserType } from "../../libraries/RTD";
 
 export default class SelectionView extends React.Component {
+  setTypeOfUser(type: string, uid: any, navigate: any) {
+    console.log("YOLO");
+    console.log(uid);
+    setUserType(uid, type.toLowerCase()).then(() => {
+      navigate(type);
+    });
+  }
+
+  confirmSelection(type: string, navigate: any) {
+    Alert.alert(
+      type,
+      "You are about to select to be a " + type,
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            this.setTypeOfUser(
+              type,
+              this.props.navigation.state.params.user.uid,
+              navigate
+            );
+          }
+        }
+      ],
+      { cancelable: true }
+    );
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -12,7 +46,7 @@ export default class SelectionView extends React.Component {
           <Button
             style={styles.button}
             color={Colors.white}
-            onPress={() => navigate("Charity")}
+            onPress={() => this.confirmSelection("Charity", navigate)}
             title="Charity"
           />
         </View>
@@ -20,15 +54,15 @@ export default class SelectionView extends React.Component {
           <Button
             style={styles.button}
             color={Colors.white}
-            onPress={() => navigate("RootViewBusiness")}
+            onPress={() => this.confirmSelection("Business", navigate)}
             title="Business"
           />
         </View>
         <View style={[styles.sectionWrapper, styles.yellow]}>
           <Button
             style={styles.button}
-            color={Colors.black}
-            onPress={() => navigate("RootViewEmployee")}
+            color={Colors.white}
+            onPress={() => this.confirmSelection("Employee")}
             title="Employee"
           />
         </View>

@@ -1,53 +1,57 @@
 {
-  "Charity": {
-    "EIN": "9384539453-1", // string
-    "Name": "stirng",
-    "Descrpition": "string",
-    "Images": "array of strings",
-    "Additional Description": "string",
-    "Phone number": "string",
-    "email": "string",
-    "isValidated": "boolean",
-    "Projects": [
-      {
-        "uid": "string",
-        "name": "string",
-        "description": "string",
-        "images": "array of strings",
-        "fundingGoal": "integer",
-        "currentFunding": "integer",
-        "isValidated": "boolean",
-        "status": "string"
-      }
-    ]
+  "types": {
+    "UID": "CHARITY"
   },
+// }
+//   "Charity": {
+//     "EIN": "9384539453-1", // string
+//     "Name": "stirng",
+//     "Descrpition": "string",
+//     "Images": "array of strings",
+//     "Additional Description": "string",
+//     "Phone number": "string",
+//     "email": "string",
+//     "isValidated": "boolean",
+//     "Projects": [
+//       {
+//         "uid": "string",
+//         "name": "string",
+//         "description": "string",
+//         "images": "array of strings",
+//         "fundingGoal": "integer",
+//         "currentFunding": "integer",
+//         "isValidated": "boolean",
+//         "status": "string"
+//       }
+//     ]
+//   },
 
-  "Employer": {
-    "EIN": "string",
-    "Name": "stirng",
-    "Description": "string",
-    "Logo": "string",
-    "Phone number": "string",
-    "email": "string",
-    "isValidated": "boolean",
-    "Employees": [
-      {
-        "UID": "string",
-        "Name": "string",
-        "Phone number": "string",
-        "email": "string",
-        "currentCharity": "string",
-        "pastCharities": "array of stirngs",
-        "monthlyDonation": "integer",
-        "pastDonations": [
-          {
-            "uid": "string",
-            "date": "string",
-            "amount": "integer",
-            "project": "string (project uid)"
-          }
-        ]
-      }
-    ]
-  }
-}
+//   "Employer": {
+//     "EIN": "string",
+//     "Name": "stirng",
+//     "Description": "string",
+//     "Logo": "string",
+//     "Phone number": "string",
+//     "email": "string",
+//     "isValidated": "boolean",
+//     "Employees": [
+//       {
+//         "UID": "string",
+//         "Name": "string",
+//         "Phone number": "string",
+//         "email": "string",
+//         "currentCharity": "string",
+//         "pastCharities": "array of stirngs",
+//         "monthlyDonation": "integer",
+//         "pastDonations": [
+//           {
+//             "uid": "string",
+//             "date": "string",
+//             "amount": "integer",
+//             "project": "string (project uid)"
+//           }
+//         ]
+//       }
+//     ]
+//   }
+// }
