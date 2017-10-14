@@ -8,7 +8,7 @@ export default class SelectionView extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Selection View</Text>
-        <Button onPress={() => navigate("RootViewAdmin")} title="Charity" />
+        <Button onPress={() => navigate("Charity")} title="Charity" />
         <Button onPress={() => navigate("RootViewBusiness")} title="Business" />
         <Button onPress={() => navigate("RootViewEmployee")} title="Employee" />
       </View>

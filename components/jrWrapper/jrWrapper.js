@@ -7,6 +7,7 @@ import NavComponent from "../NavComponent/NavComponent";
 export default class JrWrapper extends React.Component {
   render() {
     let nav = this.props.nav;
+
     return (
       <View style={styles.container}>
         <NavComponent nav={nav} />

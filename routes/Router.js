@@ -6,10 +6,17 @@ import RootViewAdmin from "../views/RootViewAdmin/RootViewAdmin";
 import RootViewBusiness from "../views/RootViewBusiness/RootViewBusiness";
 import RootViewEmployee from "../views/RootViewEmployee/RootViewEmployee";
 
-const routes = StackNavigator(
+import CharityHome from "../views/Charity/CharityHome";
+
+var charity = StackNavigator({
+  Home: { screen: CharityHome }
+});
+
+var routes = StackNavigator(
   {
     Home: { screen: HomeView }, // login screen
-    Selection: { screen: SelectionView }
+    Selection: { screen: SelectionView },
+    Charity: { screen: charity }
     // RootViewAdmin: { screen: RootViewAdmin },
     // RootViewBusiness: { screen: RootViewBusiness },
     // RootViewEmployee: { screen: RootViewEmployee }

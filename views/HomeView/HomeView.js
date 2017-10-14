@@ -8,7 +8,7 @@ import {
   TextInput,
   TouchableHighlight
 } from "react-native";
-import { login } from "../../libraries/Auth";
+import { login, register } from "../../libraries/Auth";
 import Colors from "../../libraries/Colors";
 import * as firebase from "firebase";
 
@@ -124,7 +124,7 @@ export default class HomeView extends React.Component {
           </View>
           <View style={styles.row}>
             <TextInput
-              ref="registerPAssword"
+              ref="registerPassword"
               style={formStyles.container}
               placeholder="Password"
               returnKeyType="go"
@@ -135,7 +135,13 @@ export default class HomeView extends React.Component {
             />
           </View>
           <Button
-            onPress={() => login(this.state.email, this.state.password)}
+            onPress={() =>
+              register(
+                this.state.firstName,
+                this.state.lastName,
+                this.state.email,
+                this.state.password
+              )}
             title="Create Account"
           />
           <View style={styles.row}>
