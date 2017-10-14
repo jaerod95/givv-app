@@ -42,29 +42,29 @@ export default class SelectionView extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View style={[styles.sectionWrapper, styles.green]}>
-          <Button
-            style={styles.button}
-            color={Colors.white}
-            onPress={() => this.confirmSelection("Charity", navigate)}
-            title="Charity"
-          />
+        <View
+          style={[styles.sectionWrapper, styles.green]}
+          onPress={() => this.confirmSelection("Charity", navigate)}
+        >
+          <Text style={styles.button} color={Colors.white}>
+            Charity
+          </Text>
         </View>
-        <View style={[styles.sectionWrapper, styles.blue]}>
-          <Button
-            style={styles.button}
-            color={Colors.white}
-            onPress={() => this.confirmSelection("Business", navigate)}
-            title="Business"
-          />
+        <View
+          style={[styles.sectionWrapper, styles.blue]}
+          onPress={() => this.confirmSelection("Business", navigate)}
+        >
+          <Text style={styles.button} color={Colors.white} title="Business">
+            Business
+          </Text>
         </View>
-        <View style={[styles.sectionWrapper, styles.yellow]}>
-          <Button
-            style={styles.button}
-            color={Colors.white}
-            onPress={() => this.confirmSelection("Employee")}
-            title="Employee"
-          />
+        <View
+          style={[styles.sectionWrapper, styles.yellow]}
+          onPress={() => this.confirmSelection("Employee")}
+        >
+          <Text style={styles.button} color={Colors.white}>
+            Employee
+          </Text>
         </View>
       </View>
     );
@@ -78,11 +78,13 @@ const styles = StyleSheet.create({
   },
   sectionWrapper: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center"
   },
   button: {
-    flex: 1,
-    color: Colors.white
+    color: Colors.white,
+    justifyContent: "center",
+    alignItems: "center"
   },
   blue: {
     backgroundColor: Colors.main
