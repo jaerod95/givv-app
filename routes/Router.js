@@ -15,11 +15,11 @@ var charity = StackNavigator({
 var routes = StackNavigator(
   {
     Home: { screen: HomeView }, // login screen
-    Selection: { screen: SelectionView },
+    Selection: { screen: SelectionView }
     Charity: { screen: charity }
-    // RootViewAdmin: { screen: RootViewAdmin },
-    // RootViewBusiness: { screen: RootViewBusiness },
-    // RootViewEmployee: { screen: RootViewEmployee }
+    RootViewAdmin: { screen: RootViewAdmin },
+    RootViewBusiness: { screen: RootViewBusiness },
+    RootViewEmployee: { screen: RootViewEmployee }
   },
   { headerMode: "none" }
 );
