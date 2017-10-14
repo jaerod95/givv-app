@@ -1,11 +1,19 @@
 // @flow
 import React from "react";
-import { StyleSheet } from "react-native";
+
+import { StyleSheet, View } from "react-native";
+
+import JrWrapper from "./components/jrWrapper/jrWrapper";
+
 import Router from "./routes/Router";
 
 export default class App extends React.Component {
   render() {
-    return <Router />;
+    return (
+      <JrWrapper>
+        <Router />
+      </JrWrapper>
+    );
   }
 }
 

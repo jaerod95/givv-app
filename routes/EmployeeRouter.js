@@ -1,9 +1,10 @@
-import { StackNavigator } from "react-navigation";
+// @flow
+import { DrawerNavigator } from "react-navigation";
 
-import HomeView from "../views/HomeView/HomeView";
+import ProfileView from "../views/RootViewEmployee/ProfileView/ProfileView";
 
-const routes = StackNavigator({
-  Home: { screen: HomeView } // login screen
+const routes = DrawerNavigator({
+  Profile: { screen: ProfileView }
 });
 
 export default routes;
