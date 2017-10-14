@@ -1,26 +1,18 @@
 // @flow
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet } from "react-native";
+import Router from "../../routes/AdminRouter";
 
 export default class RootViewAdmin extends React.Component {
   render() {
-    const { navigate } = this.props.navigation;
-    return (
-      <View style={styles.container}>
-        <Text>Root View Admin</Text>
-        <Button
-          onPress={() => navigate("RootViewBusiness")}
-          title="Select me bro"
-        />
-      </View>
-    );
+    return <Router />;
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FF0",
+    backgroundColor: "#FFF",
     alignItems: "center",
     justifyContent: "center"
   }

@@ -1,8 +1,7 @@
 // @flow
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-
-import Router from "./routes/route";
+import { StyleSheet } from "react-native";
+import Router from "./routes/Router";
 
 export default class App extends React.Component {
   render() {

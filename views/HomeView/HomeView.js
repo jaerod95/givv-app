@@ -17,7 +17,7 @@ export default class HomeView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FF0",
+    backgroundColor: "#FFF",
     alignItems: "center",
     justifyContent: "center"
   }

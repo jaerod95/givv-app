@@ -8,10 +8,9 @@ export default class SelectionView extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Selection View</Text>
-        <Button
-          onPress={() => navigate("RootViewAdmin")}
-          title="Select me bro"
-        />
+        <Button onPress={() => navigate("RootViewAdmin")} title="Charity" />
+        <Button onPress={() => navigate("RootViewBusiness")} title="Business" />
+        <Button onPress={() => navigate("RootViewEmployee")} title="Employee" />
       </View>
     );
   }
@@ -20,7 +19,7 @@ export default class SelectionView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FF0",
+    backgroundColor: "#FFF",
     alignItems: "center",
     justifyContent: "center"
   }
